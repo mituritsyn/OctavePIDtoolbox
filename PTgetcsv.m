@@ -11,6 +11,8 @@ function [filename csvFnames] = PTgetcsv(filename, firmware_flag)
 
 
 fnums = 1;
+% todo
+contains = @(str, pattern)~cellfun('isempty', {strfind(str, pattern)});
 
 a=strfind(filename, ' ');% had to remove white space  to run in bb decode
 a=fliplr(a);

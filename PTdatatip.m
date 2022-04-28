@@ -33,10 +33,10 @@ if ~strcmp(a,'image') % ugly workaround
             dgts=6;
         end   
         if pos(2) > -logviewerYscale
-        output_txt = {['x: ',num2str(pos(1),dgts)],...
+        output_txt = {['x: ',num2str(pos(1),dgts)],
             ['y: ',num2str(pos(2),4)]};
         else
-            output_txt = {['sec: ',num2str(pos(1),dgts)],...
+            output_txt = {['sec: ',num2str(pos(1),dgts)],
             ['%: ',num2str(((pos(2)+(logviewerYscale*2)) / (logviewerYscale/100)),4)]};
         end
             
@@ -44,7 +44,7 @@ if ~strcmp(a,'image') % ugly workaround
 %         dataTipH=plot([pos(1) pos(1)], [-2400 2400],'r-');
 %         get(dataTipH)
         if c==c1 | c==c2
-            output_txt = {['x: ',num2str(pos(1),4)],...
+            output_txt = {['x: ',num2str(pos(1),4)],
             ['y: ',num2str(pos(2),4)]};
         end
         % If there is a Z-coordinate in the position, display it as well
@@ -54,7 +54,7 @@ if ~strcmp(a,'image') % ugly workaround
         set(findall(gcf,'type','hggroup'),'FontSize',fontsz2,'FontWeight', 'bold')
     else
         pos = get(event_obj,'Position');  
-        output_txt = {['X: ',num2str(pos(1),4)],...
+        output_txt = {['X: ',num2str(pos(1),4)],
             ['Y: ',num2str(pos(2),4)]};
 
         % If there is a Z-coordinate in the position, display it as well
@@ -63,11 +63,11 @@ if ~strcmp(a,'image') % ugly workaround
         end
         if strcmp(a,'image') 
 %             pos = get(event_obj,'Position');
-%             output_txt = {['X: ',num2str(pos(1),4)],...
+%             output_txt = {['X: ',num2str(pos(1),4)],
 %             ['Y: ',num2str(pos(2),4)]};
         
             y=(obj.Parent.YLim(2)-pos(2)) / (.3);
-            output_txt = {['%T: ',num2str(pos(1),4)],...
+            output_txt = {['%T: ',num2str(pos(1),4)],
             ['Hz: ',num2str(y,4)]};
  
             z=event_obj.Target.CData(pos(2),pos(1));

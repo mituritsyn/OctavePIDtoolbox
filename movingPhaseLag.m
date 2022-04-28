@@ -12,17 +12,17 @@ j=1;
 for i=wind:stpsz:size(DATmainA.debug(1,:),2)-wind+1
     waitbar(i/length(DATmainA.debug(1,:)),hw);
     j=j+1;
-     SampleDelaytmp_A(1,j)=finddelay(smooth(DATmainA.debug(1,i-wind+1:i+wind),precalcSmooth),smooth(DATmainA.GyroFilt(1,i-wind+1:i+wind),precalcSmooth),maxlag);  
+     SampleDelaytmp_A(1,j)=finddelay(smooth(DATmainA.debug(1,i-wind+1:i+wind),precalcSmooth),smooth(DATmainA.GyroFilt(1,i-wind+1:i+wind),precalcSmooth));  
      if SampleDelaytmp_A(1,j)<=0,
-         if finddelay(smooth(DATmainA.debug(2,i-wind+1:i+wind),precalcSmooth),smooth(DATmainA.GyroFilt(2,i-wind+1:i+wind),precalcSmooth),maxlag) > 0
+         if finddelay(smooth(DATmainA.debug(2,i-wind+1:i+wind),precalcSmooth),smooth(DATmainA.GyroFilt(2,i-wind+1:i+wind),precalcSmooth)) > 0
             % try pitch
-            SampleDelaytmp_A(1,j)=finddelay(smooth(DATmainA.debug(2,i-wind+1:i+wind),precalcSmooth),smooth(DATmainA.GyroFilt(2,i-wind+1:i+wind),precalcSmooth),maxlag);
+            SampleDelaytmp_A(1,j)=finddelay(smooth(DATmainA.debug(2,i-wind+1:i+wind),precalcSmooth),smooth(DATmainA.GyroFilt(2,i-wind+1:i+wind),precalcSmooth));
          end
      end
      if SampleDelaytmp_A(1,j)<=0,
-         if finddelay(smooth(DATmainA.debug(3,i-wind+1:i+wind),precalcSmooth),smooth(DATmainA.GyroFilt(3,i-wind+1:i+wind),precalcSmooth),maxlag) > 0
+         if finddelay(smooth(DATmainA.debug(3,i-wind+1:i+wind),precalcSmooth),smooth(DATmainA.GyroFilt(3,i-wind+1:i+wind),precalcSmooth)) > 0
              % try yaw
-             SampleDelaytmp_A(1,j)=finddelay(smooth(DATmainA.debug(3,i-wind+1:i+wind),precalcSmooth),smooth(DATmainA.GyroFilt(3,i-wind+1:i+wind),precalcSmooth),maxlag);
+             SampleDelaytmp_A(1,j)=finddelay(smooth(DATmainA.debug(3,i-wind+1:i+wind),precalcSmooth),smooth(DATmainA.GyroFilt(3,i-wind+1:i+wind),precalcSmooth));
          end
      end
      if SampleDelaytmp_A(1,j)<0,
@@ -72,15 +72,16 @@ hw = waitbar(0,'Please wait...');
 for i=wind:stpsz:size(DATmainB.debug(1,:),2)-wind+1
      waitbar(i/length(DATmainB.debug(1,:)),hw);
     j=j+1;
-     SampleDelaytmp_B(1,j)=finddelay(smooth(DATmainB.debug(1,i-wind+1:i+wind),precalcSmooth),smooth(DATmainB.GyroFilt(1,i-wind+1:i+wind),precalcSmooth),maxlag);  
+     SampleDelaytmp_B(1,j)=finddelay(smooth(DATmainB.debug(1,i-wind+1:i+wind),precalcSmooth),smooth(DATmainB.GyroFilt(1,i-wind+1:i+wind),precalcSmooth));  
      if SampleDelaytmp_B(1,j)<=0,% try pitch
-         if finddelay(smooth(DATmainB.debug(2,i-wind+1:i+wind),precalcSmooth),smooth(DATmainB.GyroFilt(2,i-wind+1:i+wind),precalcSmooth),maxlag) >0
-            SampleDelaytmp_B(1,j)=finddelay(smooth(DATmainB.debug(2,i-wind+1:i+wind),precalcSmooth),smooth(DATmainB.GyroFilt(2,i-wind+1:i+wind),precalcSmooth),maxlag);
+         if finddelay(smooth(DATmainB.debug(2,i-wind+1:i+wind),precalcSmooth),smooth(DATmainB.GyroFilt(2,i-wind+1:i+wind),precalcSmooth)) >0
+            SampleDelaytmp_B(1,j)=finddelay(smooth(DATmainB.debug(2,i-wind+1:i+wind),precalcSmooth),smooth(DATmainB.GyroFilt(2,i-wind+1:i+wind),precalcSmooth));
          end
      end
      if SampleDelaytmp_B(1,j)<=0,% try yaw
-         if finddelay(smooth(DATmainB.debug(3,i-wind+1:i+wind),precalcSmooth),smooth(DATmainB.GyroFilt(3,i-wind+1:i+wind),precalcSmooth),maxlag) > 0
-            SampleDelaytmp_B(1,j)=finddelay(smooth(DATmainB.debug(3,i-wind+1:i+wind),precalcSmooth),smooth(DATmainB.GyroFilt(3,i-wind+1:i+wind),precalcSmooth),maxlag);
+     %todo removed maxlag from finddelay
+         if finddelay(smooth(DATmainB.debug(3,i-wind+1:i+wind),precalcSmooth),smooth(DATmainB.GyroFilt(3,i-wind+1:i+wind),precalcSmooth)) > 0
+            SampleDelaytmp_B(1,j)=finddelay(smooth(DATmainB.debug(3,i-wind+1:i+wind),precalcSmooth),smooth(DATmainB.GyroFilt(3,i-wind+1:i+wind),precalcSmooth));
          end
      end 
      if SampleDelaytmp_B(1,j)<0,

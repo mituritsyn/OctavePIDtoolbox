@@ -14,7 +14,7 @@ set(PTerrfig, 'pointer', 'watch')
 if ~isempty(filenameA) || ~isempty(filenameB)
     %% update fonts
 
-    prop_max_screen=(max([PTerrfig.Position(3) PTerrfig.Position(4)]));
+    prop_max_screen=(max([get(PTerrfig, 'Position')(3) get(PTerrfig, 'Position')(4)]));
     fontsz3=round(screensz_multiplier*prop_max_screen);
 
     guiHandlesPIDerr.refresh.FontSize=fontsz3; 

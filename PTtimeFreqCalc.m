@@ -32,11 +32,11 @@ function [Tm freq specMat] = PTtimeFreqCalc(Y, F, smoothFactor, subsampleFactor)
             Yseg(j,:) = Y(i-(halfSegment) : i+(halfSegment)-1); 
         end
     end
-        
+        %todo lowess>moving 
     specMat=[];freq = [];
     for i = 1 : size(Yseg,1)
         [freq specMat(i,:)] = PTSpec2d(Yseg(i,:), F, 1);
-        specMat(i,:) = smooth(specMat(i,:), smoothFactor, 'lowess');
+        specMat(i,:) = smooth(specMat(i,:), smoothFactor, 'moving');
     end
     specMat = flipud(specMat');
  

@@ -12,7 +12,8 @@ function [stepresponse, t] = PTstepcalc(SP, GY, lograte, Ycorrection, smoothFact
 % this stuff is worth it, you can buy me a beer in return. -Brian White
 % ----------------------------------------------------------------------------------
 smoothVals = [1 20 40 60];
-GY = smooth(GY, smoothVals(smoothFactor),'lowess');
+%todo lowess>moving 
+GY = smooth(GY, smoothVals(smoothFactor),'moving');
 
 minInput = 20;
 segment_length = (lograte*2000); % 2 sec segments
