@@ -9,9 +9,9 @@
 
 if ~isempty(fnameMaster)
 
-    set(PTfig, 'pointer', 'watch')
+    set(PTfig, 'pointer', 'watch');
 
-    global logviewerYscale
+    global logviewerYscale;
     logviewerYscale = str2num(get(guiHandles.maxY_input, 'String'));
 
     figure(PTfig);
@@ -73,7 +73,7 @@ if ~isempty(fnameMaster)
     tIND{get(guiHandles.FileNum, 'Value')} = (tta{get(guiHandles.FileNum, 'Value')} > (t1 * us2sec)) & (tta{get(guiHandles.FileNum, 'Value')} < (t2 * us2sec));
 
     guiHandles.slider = uicontrol(PTfig, 'style', 'slider', 'SliderStep', [0.001 0.01], 'Visible', 'on', 'units', 'normalized', 'position', [0.0826 0.905 0.795 0.02],
-    'min', 0, 'max', 1, 'callback', 'Slider')
+    'min', 0, 'max', 1, 'callback', 'Slider');
 
     %% log viewer line plots
     %%%%%%%% PLOT %%%%%%%
@@ -88,9 +88,9 @@ if ~isempty(fnameMaster)
     for i = 1:size(axesOptionsLV, 2)
 
         if i == size(axesOptionsLV, 2)
-            ylabelname = [ylabelname axLabel{str2num(axesOptionsLV(i))} '-' lineStyle2LVnames{i} '   (deg/s) '];
+            ylabelname = [ylabelname axLabel{axesOptionsLV(i)} '-' lineStyle2LVnames{i} '   (deg/s) '];
         else
-            ylabelname = [ylabelname axLabel{str2num(axesOptionsLV(i))} '-' lineStyle2LVnames{i} '   |   '];
+            ylabelname = [ylabelname axLabel{axesOptionsLV(i)} '-' lineStyle2LVnames{i} '   |   '];
         end
 
     end
@@ -107,7 +107,7 @@ if ~isempty(fnameMaster)
     for i = 1:19
 
         try
-            eval(['delete([hch' int2str(i) '])'])
+            eval(['delete([hch' int2str(i) '])']);
         catch
         end
 

@@ -64,7 +64,7 @@ if ~isempty(fnameMaster)
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%%% compute fft %%%%%%%%%%%%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    if get(guiHandlesSpec.SpecSelect{1}, 'Value') > 1 | get(guiHandlesSpec.SpecSelect{2}, 'Value') > 1 | get(guiHandlesSpec.SpecSelect{3}, 'Value') > 1 | get(guiHandlesSpec.SpecSelect{4}, 'Value') > 1
+    if get(guiHandlesSpec.SpecSelect{1}, 'Value') > 1 || get(guiHandlesSpec.SpecSelect{2}, 'Value') > 1 || get(guiHandlesSpec.SpecSelect{3}, 'Value') > 1 || get(guiHandlesSpec.SpecSelect{4}, 'Value') > 1
         set(PTspecfig, 'pointer', 'watch')
 
         if updateSpec == 0
@@ -77,7 +77,7 @@ if ~isempty(fnameMaster)
 
                 for a = 1:3,
 
-                    if ((~isempty(strfind(s, 'axisD'))) & a == 3) | isempty(s)
+                    if ((~isempty(strfind(s, 'axisD'))) && a == 3) || isempty(s)
                         p = p + 1;
                         smat{p} = []; %string
                         ampmat{p} = []; %spec matrix
